@@ -3,8 +3,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 const Formulario = ({ colaboradores, setColaboradores, setDataAlerta }) => {
-    // --------------------------- useState para almacenar los datos de registro
-    
+
+    // --------------------------- useState para almacenar los datos    
     const [counter, setCounter] = useState(4);
     const [nombre, setNombre] = useState('');
     const [correo, setCorreo] = useState('');
@@ -57,14 +57,14 @@ const Formulario = ({ colaboradores, setColaboradores, setDataAlerta }) => {
                 setEdad('');
                 setCargo('');
                 setTelefono('');
-                 // ---------------------- agrega colaborador
+                 // ---------------------- Agrega colaborador
                 setCounter(counter + 1);
                 let id = counter.toString();
                 const colaborador = { id, nombre, correo, edad, cargo, telefono };
                 setColaboradores([...colaboradores, colaborador]);
             break;
         };       
-       // setDataAlerta({ msg, color });
+        setDataAlerta({ msg, color });
     };
 
     return (
