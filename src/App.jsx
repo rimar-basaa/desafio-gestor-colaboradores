@@ -14,6 +14,7 @@ import Alerta from './components/Alerta';
 
 
 function App() {
+<<<<<<< HEAD
     const [colaboradores, setColaboradores] = useState(BaseColaboradores);
     const [dataAlerta, setDataAlerta] = useState({msg: "...", color: "light"}); 
     const [filtro, setFiltro] = useState('');
