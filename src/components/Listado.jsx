@@ -1,9 +1,8 @@
+import React from 'react';
 import Table from 'react-bootstrap/Table';
 
-const Listado = () => {
-
+const Listado = ({ colaboradores }) => {
     return (
-       
         <Table responsive striped bordered size="sm">
             <thead>
                 <tr>
@@ -15,36 +14,19 @@ const Listado = () => {
                     <th>Telefono</th>
                 </tr>
             </thead>
-                
-            <tbody>        
-                <tr>
-                    <td>1</td>
-                    <td>rimar basaa</td>
-                    <td>rimar@gmail.com</td>
-                    <td>25</td>
-                    <td>Front End</td>
-                    <td>12345678</td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>rimar basaa</td>
-                    <td>rimar@gmail.com</td>
-                    <td>25</td>
-                    <td>Front End</td>
-                    <td>12345678</td>
-                </tr>
-
-                <tr>
-                    <td>1</td>
-                    <td>rimar basaa</td>
-                    <td>rimar@gmail.com</td>
-                    <td>25</td>
-                    <td>Front End</td>
-                    <td>12345678</td>
-                </tr>
+            <tbody>
+                {colaboradores.map(colaborador => (
+                    <tr key={colaborador.id}>
+                        <td>{colaborador.id}</td>
+                        <td>{colaborador.nombre}</td>
+                        <td>{colaborador.correo}</td>
+                        <td>{colaborador.edad}</td>
+                        <td>{colaborador.cargo}</td>
+                        <td>{colaborador.telefono}</td>
+                    </tr>
+                ))}
             </tbody>
-        </Table>        
+        </Table>
     );
 };
 

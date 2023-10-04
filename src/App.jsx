@@ -14,41 +14,45 @@ import Alerta from './components/Alerta';
 
 
 function App() {
-
     const [colaboradores, setColaboradores] = useState(BaseColaboradores);
-    console.log(colaboradores);// solo x monitoreo basedato
-
     const [dataAlerta, setDataAlerta] = useState({msg: "...", color: "light"}); 
+    const [filtro, setFiltro] = useState('');
 
-  return (
-    <Container fluid>
-        <h1>Lista de colaboradores</h1>
-        <Row>
-            <Col sm={12} md={6}>
+    const Buscando = (textoBusqueda) => {
+        setFiltro(textoBusqueda);
+    };
 
-                {/* aqui Buscador */}
-                <Buscador />
+    const colaboradoresFiltrados = colaboradores.filter((colaborador) => {
+        return (
+            colaborador.nombre.toLowerCase().includes(filtro.toLowerCase()) ||
+            colaborador.correo.toLowerCase().includes(filtro.toLowerCase()) ||
+            colaborador.edad.toString().includes(filtro) ||
+            colaborador.telefono.toString().includes(filtro)
+        );
+    });
 
-            </Col>
-        </Row>
-        <Row>
-            <Col sm={12} md={9}>
-
-                {/* aqui Listado */}
-                <Listado />
-
-            </Col>
-                
-            <Col sm={12} md={3}>
-                <div className='boxAdd'>
-                    <p className='titleForm'>Agregar colaborador</p>
-                    <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setDataAlerta={setDataAlerta} />
-                    <Alerta dataAlerta={dataAlerta} />
-                </div>
-            </Col>
-        </Row>              
-    </Container>
-  );
-};
+    return (
+        <Container fluid>
+            <h1>Lista de colaboradores</h1>
+            <Row>
+                <Col sm={12} md={6}>
+                    <Buscador onBuscar={Buscando} />
+                </Col>
+            </Row>
+            <Row>
+                <Col sm={12} md={9}>
+                    <Listado colaboradores={colaboradoresFiltrados} />
+                </Col>
+                <Col sm={12} md={3}>
+                    <div className='boxAdd'>
+                        <p className='titleForm'>Agregar colaborador</p>
+                        <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} setDataAlerta={setDataAlerta} />
+                        <Alerta dataAlerta={dataAlerta} />
+                    </div>
+                </Col>
+            </Row>              
+        </Container>
+    );
+}
 
 export default App;
