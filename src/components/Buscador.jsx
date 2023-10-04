@@ -1,6 +1,12 @@
+import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 
-const Buscador = () => {
+const Buscador = ({ onBuscar }) => {
+    const [textoBusqueda] = useState('');
+
+    const onInputChange = (event) => {
+        onBuscar(event.target.value);
+    };
 
     return (
         <Form>                
@@ -9,10 +15,12 @@ const Buscador = () => {
                     size="sm"
                     className="mb-3"
                     type="text"
-                    placeholder="Buscar colaborador..."                    
+                    placeholder="Buscar colaborador..."
+                    onChange={onInputChange}
                 />
             </Form.Group>                
         </Form>
     );
 };
+
 export default Buscador;
