@@ -1,0 +1,21 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+.boxAdd {
+    min-width: 250px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.titleForm {
+    font-size: 20px;
+    font-weight: 800;
+}
+.btn {
+    width: 100%;
+}
