@@ -33,7 +33,7 @@ function App() {
 
     return (
         <Container fluid>
-            <h1>Lista de colaboradores</h1>
+            <h1 className='title'>Lista de colaboradores</h1>
             <Row>
                 <Col sm={12} md={6}>
                     <Buscador onBuscar={Buscando} />
